@@ -1,4 +1,4 @@
-package com.uade.usersapi.router.dto.book;
+package com.uade.usersapi.router.infraestructure.db.entity;
 
 import com.uade.usersapi.core.model.constant.BookStatus;
 import java.util.List;
@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
-public class BookDto {
+public class BookEntity {
 
   private String id;
   private String isbn;

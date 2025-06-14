@@ -1,6 +1,5 @@
-package com.uade.usersapi.router.infraestructure.db.entity;
+package com.uade.usersapi.core.model.book;
 
-import com.uade.usersapi.model.constant.BookStatus;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,10 +20,7 @@ public class Book {
   private Integer pages;
   private String edition;
   private String publisher;
-  private String author;
+  private Author author;
   private String image;
-  private Integer rate;
-  private BookStatus status;
-  private boolean isFavorite;
-  private List<String> categories;
+  private List<BookCategory> categories;
 }
