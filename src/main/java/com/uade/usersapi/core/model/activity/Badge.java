@@ -1,5 +1,6 @@
 package com.uade.usersapi.core.model.activity;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
+@Entity
 public class Badge {
 
     @Id

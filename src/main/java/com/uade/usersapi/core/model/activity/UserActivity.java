@@ -18,16 +18,12 @@ public class UserActivity {
     @Id
     private String id;
 
-    private Integer coins;
+    private Integer points;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "level_id")
     private Level level;
 
     @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "user_activity_badges",
-            joinColumns = @JoinColumn(name = "user_activity_id"),
-            inverseJoinColumns = @JoinColumn(name = "badge_id")
-    )
+    @JoinTable(name = "user_activity_badges", joinColumns = @JoinColumn(name = "user_activity_id"), inverseJoinColumns = @JoinColumn(name = "badge_id"))
     private List<Badge> badges;
 }

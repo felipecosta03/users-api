@@ -1,18 +1,49 @@
 package com.uade.usersapi.core.model.social;
 
 import com.uade.usersapi.core.model.user.User;
-import java.time.LocalDateTime;
-import java.util.List;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
+@Setter
+@Entity
 public class Community {
 
-  private User admin;
-  private List<User> members;
-  private LocalDateTime dateCreated;
-  private List<Post> posts;
-  private List<User> likes;
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
+    private String name;
+
+    @Column(length = 1000)
+    private String description;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "admin_id")
+    private User admin;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "community_members", joinColumns = @JoinColumn(name = "community_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> members;
+
+    private LocalDateTime dateCreated;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "community_id")
+    private List<Post> posts;
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "community")
+    private List<ReadingClub> readingClubs;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "community_likes", joinColumns = @JoinColumn(name = "community_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+    private List<User> likes;
 }

@@ -1,5 +1,6 @@
 package com.uade.usersapi.core.model.user;
 
+import jakarta.persistence.Embeddable;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Setter
+@Embeddable
 public class Address {
 
   private String state;
@@ -16,4 +18,3 @@ public class Address {
   private Double longitude;
   private Double latitude;
 }
-
